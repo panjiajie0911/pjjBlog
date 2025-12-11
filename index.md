@@ -9,5 +9,5 @@ hero:
   actions:
     - theme: brand
       text: article
-      link: /markdown-examples
+      link: T
 ---
