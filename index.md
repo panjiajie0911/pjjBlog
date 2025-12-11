@@ -8,6 +8,6 @@ hero:
   tagline: front-end knowledge
   actions:
     - theme: brand
-      text: article
-      link: T
+      text: ariticle
+      link: /docs/typescript/T
 ---
