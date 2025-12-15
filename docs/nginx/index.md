@@ -17,9 +17,10 @@ nginx 就是反向代理的这个代理服务器。
 
 ## 目录结构
 
-├── client_body_temp                 # POST  大文件暂存目录
-├── conf                             # Nginx 所有配置文件的目录
-│   ├── fastcgi.conf                 # fastcgi 相关参数的配置文件
+```bash
+├──client_body_temp                 #POST 大文件暂存目录
+├──conf                             #Nginx 所有配置文件的目录
+│    ├──fastcgi.conf                 #fastcgi 相关参数的配置文件
 │   ├── fastcgi.conf.default         # fastcgi.conf 的原始备份文件
 │   ├── fastcgi_params               # fastcgi 的参数文件
 │   ├── fastcgi_params.default      
@@ -43,7 +44,42 @@ nginx 就是反向代理的这个代理服务器。
 │   ├── error.log                   #  错误日志文件
 │   └── nginx.pid                   # pid 文件，Nginx 进程启动后，会把所有进程的 ID 号写到此文件
 ├── proxy_temp                       #  临时目录
-├── sbin                             # Nginx  可执行文件目录
-│   └── nginx                       # Nginx  二进制可执行程序
-├── scgi_temp                       #  临时目录
-└── uwsgi_temp                       #  临时目录
+├──sbin                             #Nginx 可执行文件目录
+│   └──nginx                       #Nginx 二进制可执行程序
+├──scgi_temp                       #临时目录
+└──uwsgi_temp                      #临时目录
+```
+
+## 核心文件 nginx.conf
+
+nginx 的核心功能在 conf 文件夹中的 **nginx.conf** 文件中。
+
+**nginx.conf** 本质上是一个一个的模块，一个{}用来表示一个模块，模块中再设置具体的指令。它的结构如下：
+
+```bash
+全局模块 #nginx的用户名，日志的存放路径
+events模块 #事件模块
+http模块 #配置和http相关的模块，比如超时连接时间，代理等等，内含server模块
+  server模块 #配置虚拟主机，内含location模块
+    location模块 #配置url路由规则
+
+```
+
+比如下面这样的基础配置
+
+```vbscript
+全局模块
+event 模块
+http 模块
+    server模块  // server模块可以是多个
+        location块 //  location块可以是多个
+        location块
+        ....
+    server模块
+        location块
+        location块
+        ...
+    ....
+```
+
+基础的参数配置详解，请参见 **nginx.conf**文件。
