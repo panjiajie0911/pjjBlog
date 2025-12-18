@@ -2,7 +2,7 @@
  * @Author: 潘家杰 panjiajie@chexiao.co
  * @Date: 2025-12-10 10:46:32
  * @LastEditors: 潘家杰 panjiajie@chexiao.co
- * @LastEditTime: 2025-12-15 16:24:20
+ * @LastEditTime: 2025-12-17 15:48:51
  * @FilePath: \pjjBlog\.vitepress\config.mts
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -20,7 +20,10 @@ export default defineConfig({
       { text: "测试", link: "/markdown-example" },
       {
         text: "typescript",
-        items: [{ text: "类型变量", link: "/docs/typescript/T" }],
+        items: [
+          { text: "类型变量", link: "/docs/typescript/T" },
+          { text: "高级类型", link: "/docs/typescript/type" },
+        ],
       },
       { text: "vue", items: [] },
       {
