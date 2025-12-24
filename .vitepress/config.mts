@@ -30,7 +30,7 @@ export default defineConfig({
         text: "nginx",
         items: [
           { text: "nginx", link: "/docs/nginx/index" },
-          { text: "nginx源码", link: "/docs/nginx/source" },
+          { text: "nginx配置", link: "/docs/nginx/config" },
         ],
       },
       { text: "javaScript", items: [] },

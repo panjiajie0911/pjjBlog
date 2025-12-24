@@ -1,3 +1,12 @@
+<!--
+ * @Author: 潘家杰 panjiajie@chexiao.co
+ * @Date: 2025-12-15 09:44:41
+ * @LastEditors: 潘家杰 panjiajie@chexiao.co
+ * @LastEditTime: 2025-12-22 11:47:52
+ * @FilePath: \pjjBlog\docs\nginx\index.md
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
+
 # 关于 nginx
 
 ## 正向代理和反向代理
@@ -20,13 +29,13 @@ nginx 就是反向代理的这个代理服务器。
 ```bash
 ├──client_body_temp                 #POST 大文件暂存目录
 ├──conf                             #Nginx 所有配置文件的目录
-│    ├──fastcgi.conf                 #fastcgi 相关参数的配置文件
-│   ├── fastcgi.conf.default         # fastcgi.conf 的原始备份文件
-│   ├── fastcgi_params               # fastcgi 的参数文件
+│    ├──fastcgi.conf                 # fastcgi 相关参数的配置文件
+│   ├── fastcgi.conf.default         # fastcgi.conf 的原始备份文件
+│   ├── fastcgi_params               # fastcgi 的参数文件
 │   ├── fastcgi_params.default      
 │   ├── koi-utf
 │   ├── koi-win
-│   ├── mime.types                   #  媒体类型
+│   ├── mime.types                   # 媒体类型
 │   ├── mime.types.default
 │   ├── nginx.conf                   #这是 Nginx 默认的主配置文件，日常使用和修改的文件
 │   ├── nginx.conf.default

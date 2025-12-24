@@ -60,34 +60,42 @@ interface A {
 interface B {
   name: string;
 }
+
 // 让A的所有属性可选
 interface B extends Partial<A> {
   name: string;
 }
+
 // 让A的所有属性只读
 interface C extends Readonly<A> {
   name: string;
 }
+
 // 让A的所有属性必选
 interface D extends Required<A> {
   name: string;
 }
+
 // 从A的属性中，选择部分属性
 interface E extends Pick<A, "name" | "id"> {
   name: string;
 }
+
 // 从A的属性中，排除部分属性
 interface F extends Omit<A, "name" | "id"> {
   name: string;
 }
+
 // 从A（联合类型）中排除B
 interface G extends Exclude<A | B, B> {
   name: string;
 }
+
 // 从A（联合类型）中提取B
 interface H extends Extract<A | B, B> {
   name: string;
 }
+
 // 从A中定义一个对象，这个对象的key是K，值是V
 interface I extends Record<string, number> {
   name: string;
