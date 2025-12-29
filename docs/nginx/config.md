@@ -2,7 +2,7 @@
  * @Author: 潘家杰 panjiajie@chexiao.co
  * @Date: 2025-12-15 16:21:30
  * @LastEditors: 潘家杰 panjiajie@chexiao.co
- * @LastEditTime: 2025-12-29 11:22:19
+ * @LastEditTime: 2025-12-29 11:48:26
  * @FilePath: \pjjBlog\docs\nginx\source.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -79,6 +79,8 @@ event 模块是拿来规定**_事件驱动_**的工作方式的，nginx 的**_�
     负载均衡是指多个请求配到服务器的模式，有下面几个模式
     - 轮询模式（默认）：按顺序循环分配。
     - least_conn：假如说有 n 台服务器，请求会把更多的请求优先分配给当前活跃连接最少的。
+    - ip_hash：客户端 IP 哈希，固定客户端对应后端服务器。
+    - weighted 轮询：只轮询**_指定权重_**的服务器。
       }
 
 ### http 模块
@@ -91,7 +93,11 @@ event 模块是拿来规定**_事件驱动_**的工作方式的，nginx 的**_�
   '"$http_user_agent" "$http_x_forwarded_for"';
 - access_log：访问日志的地址
 - error_log: 错误日志的指定路径和日志级别
-- keepalive_timeout:http 链接超市时间
+- keepalive_timeout:http 链接超市时间'
+- gzip: 是否启用压缩。on 表示开启，off 表示关闭。
+- gzip_types: 指定需要压缩的文件类型。文件类型可以是： text/html text/css application/json application/javascript 等等。
+- client_max_body_size：C 端传输过来的文件的最大大小，默认是 1m
+- tcp_nopush：一次性发送数据，减少网络传输次数。
   }
 
 ### server 模块
