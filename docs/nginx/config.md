@@ -2,7 +2,7 @@
  * @Author: 潘家杰 panjiajie@chexiao.co
  * @Date: 2025-12-15 16:21:30
  * @LastEditors: 潘家杰 panjiajie@chexiao.co
- * @LastEditTime: 2025-12-29 11:48:26
+ * @LastEditTime: 2025-12-30 18:35:47
  * @FilePath: \pjjBlog\docs\nginx\source.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -70,18 +70,20 @@ event 模块是拿来规定**_事件驱动_**的工作方式的，nginx 的**_�
 - access_log: 权限日志配置
 - error_log: 错误日志配置
 - upstream + 服务器名称 {
+
   后端服务器组的配置，所有和 TCP/UDP 转发相关的配置都在这里。多个服务器以组合的形式出现在这里。
 
-  - server + 服务器地址 + 端口：默认权重为 1
-  - server+ 服务器地址 + 端口 + weight:手动设置权重
-  - server+ 服务器地址 + 端口 + backup:备用节点
-  - least_conn :负载均衡策略选择\*\*\*按需分配请求\_\*\*。
+  - server + 服务器地址 + 端口：默认权重为 1。
+  - server+ 服务器地址 + 端口 + weight:手动设置权重。
+  - server+ 服务器地址 + 端口 + backup:备用节点。
+  - least_conn :负载均衡策略选择\*\*\_按需分配请求\_\*\*。
     负载均衡是指多个请求配到服务器的模式，有下面几个模式
     - 轮询模式（默认）：按顺序循环分配。
     - least_conn：假如说有 n 台服务器，请求会把更多的请求优先分配给当前活跃连接最少的。
     - ip_hash：客户端 IP 哈希，固定客户端对应后端服务器。
     - weighted 轮询：只轮询**_指定权重_**的服务器。
-      }
+
+}
 
 ### http 模块
 
@@ -98,8 +100,29 @@ event 模块是拿来规定**_事件驱动_**的工作方式的，nginx 的**_�
 - gzip_types: 指定需要压缩的文件类型。文件类型可以是： text/html text/css application/json application/javascript 等等。
 - client_max_body_size：C 端传输过来的文件的最大大小，默认是 1m
 - tcp_nopush：一次性发送数据，减少网络传输次数。
+
+  同时，http 模块也可以配置**_stream 模块_**，内容和上述一致。
+
   }
 
 ### server 模块
 
-**_ server 模块_**可以在 http 模块和 stream 模块都配置，用于设置服务相关的配置。
+**_ server 模块_**可以在 http 模块和 stream 模块都配置，用于设置服务相关的配置。一个**_ server 模块_**代表的就是一个虚拟机。
+{
+
+- listen: 指定 Nginx 监听的端口（可指定 IP）；比如 192.168.1.1:80;或者 80（所有 ip 的 80 端口）
+- server_name：绑定的任意个数的域名。
+- root: 指定当前虚拟主机的静态网站根目录。
+- index: 指定首页文件，当访问这个 server_name 的时候，自动查找该文件。
+- ssl_certificate： 如果是 https 协议，则指定 ssl 证书的路径。
+- ssl_certificate_key: 与上同理，则指定 SSL 私钥文件路径。
+- error_page：网页错误时候的 html 文件
+- location ：{
+    <!-- http 的核心，它标识：当 location.pathname 匹配到设置的 location 的时候，则采用这个配置 -->
+
+  - =符号是**_精确匹配_**，仅匹配完全一致的 URL 路径，比如=/index.html
+  - ^~符号是**_前缀匹配_**，匹配以指定路径开头的 URL，且不进行正则匹配
+  - ~符号是**_正则匹配_**，匹配以指定路径开头的 URL，进行正则匹配
+  - /符号是**_普通前缀匹配_**，匹配以指定路径开头的 URL
+    }
+    }
