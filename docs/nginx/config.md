@@ -2,7 +2,7 @@
  * @Author: 潘家杰 panjiajie@chexiao.co
  * @Date: 2025-12-15 16:21:30
  * @LastEditors: 潘家杰 panjiajie@chexiao.co
- * @LastEditTime: 2025-12-30 18:35:47
+ * @LastEditTime: 2025-12-30 23:23:44
  * @FilePath: \pjjBlog\docs\nginx\source.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -123,6 +123,21 @@ event 模块是拿来规定**_事件驱动_**的工作方式的，nginx 的**_�
   - =符号是**_精确匹配_**，仅匹配完全一致的 URL 路径，比如=/index.html
   - ^~符号是**_前缀匹配_**，匹配以指定路径开头的 URL，且不进行正则匹配
   - ~符号是**_正则匹配_**，匹配以指定路径开头的 URL，进行正则匹配
-  - /符号是**_普通前缀匹配_**，匹配以指定路径开头的 URL
+  - /符号是**_普通前缀匹配_**，匹配以指定路径开头的 URL。
+
+  参数配置如下：
+
+  - root:表示当 location 被匹配上之后，在这个路径下查找资源
+  - allow/deny：指定的 ip 才能访问或者禁止访问。
+  - index:表示当 location 被匹配上之后，则访问这个 index.html 文件
+  - expires ：表示是否关闭缓存资源，以及缓存的天数
+    proxy_pass ：反向代理到指定的服务器
+    # 传递真实客户端 IP 和 Host
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    # 连接超时配置
+    proxy_connect_timeout 10s;
+    proxy_read_timeout 30s;
     }
     }
