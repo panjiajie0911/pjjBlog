@@ -27,6 +27,15 @@ server {
         rewrite  ^.+apis/?(.*)$ /$1 break; # 重写请求路径
         include  uwsgi_params;
         proxy_pass   http://www.binghe.com;
+
+        proxy_pass http://127.0.0.1:8080/api/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+
+        add_header Access-Control-Allow-Origin https://front-end.com always;
+        add_header Access-Control-Allow-Methods 'GET, POST, PUT, DELETE, OPTIONS' always;
+        add_header Access-Control-Allow-Headers 'Token, Content-Type' always;
+        add_header Access-Control-Allow-Credentials true always;
     }
 
 }
