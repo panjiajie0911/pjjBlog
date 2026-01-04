@@ -2,7 +2,7 @@
  * @Author: 潘家杰 panjiajie@chexiao.co
  * @Date: 2025-12-15 16:21:30
  * @LastEditors: 潘家杰 panjiajie@chexiao.co
- * @LastEditTime: 2025-12-30 23:23:44
+ * @LastEditTime: 2025-12-31 16:23:02
  * @FilePath: \pjjBlog\docs\nginx\source.md
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -13,13 +13,13 @@
 
 ### 最顶层
 
-nginx.conf 本身就是最顶层，被称为**_全局模块_**，是一个通用配置，旗下分为另外几个模块
+nginx.conf 本身就是最顶层，被称为**_全局模块_**，是一个通用配置，旗下分为另外几个模块。
 
 - events 模块
 - http 模块
 - stream 模块
 
-根据环境的不同，在**_nginx.conf_**的同级下，可以设置 env 文件夹，区分不同的环境的配置
+根据环境的不同，在**_nginx.conf_**的同级下，可以设置 env 文件夹，区分不同的环境的配置。
 
 ```bash
 ├── env
@@ -28,7 +28,7 @@ nginx.conf 本身就是最顶层，被称为**_全局模块_**，是一个通用
 │   └── prod.conf
 ```
 
-通过 include 语法引入不同环境的配置文件
+通过 include 语法引入不同环境的配置文件。
 
 ```nginx
 include env/dev.conf;
