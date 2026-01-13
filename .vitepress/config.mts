@@ -17,7 +17,10 @@ export default defineConfig({
     nav: [{ text: "Home", link: "/" }],
 
     sidebar: [
-      { text: "测试", link: "/markdown-example" },
+      {
+        text: "测试",
+        items: [{ link: "/docs/test/unitTest", text: "Jest" }],
+      },
       {
         text: "typescript",
         items: [
